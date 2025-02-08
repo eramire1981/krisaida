@@ -34,7 +34,7 @@ $numeroDeDias = $intervalo->days;
 //Condicional Si lo anterior retorna cero, no hay habitaciones disponibles y rompa el código.
 
 
-
+//hola
 
 
 
