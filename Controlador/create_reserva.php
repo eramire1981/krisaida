@@ -26,17 +26,57 @@ $numeroDeDias = $intervalo->days;
 // Agregar validaciones de tope de camas y que no reserve la misma habitación
 //Buscar todas las reservas en un rango de fechas. Hacer un select entre las fechas para reservas. tomar las habitaciones ocupadas
 
+$queryhabitacion_ocupada = "SELECT `id_habitacion` FROM `reserva` WHERE (`fecha_check_in` BETWEEN '$entrada' AND '$salida') 
+    OR (`fecha_check_out` BETWEEN '$entrada' AND '$salida')";
 
+$consultarhabitacion = mysqli_query($conexion, $queryhabitacion_ocupada);
+
+/*
+if ($consultarhabitacion) {
+    while ($row = mysqli_fetch_assoc($consultarhabitacion)) {
+        echo "ID de habitación: " . $row['id_habitacion'] . "<br>";
+    }
+} else {
+    echo "Error en la consulta: " . mysqli_error($conexion);
+}
+
+*/
 
 //select en tabla habitaciones. Traer todas las habitaciones excepto las ocupadas. Traer aquellas en las cuales la capacidad sea >= numero de personas
 //ordenar por capacidad
 
-//Condicional Si lo anterior retorna cero, no hay habitaciones disponibles y rompa el código.
+$queryhabitacion_disponible = " SELECT `id_habitacion` FROM `habitacion` WHERE`capacidad` >= '$huespedes' AND `id_habitacion` NOT IN ( SELECT `id_habitacion` FROM `reserva` 
+        WHERE (`fecha_check_in` BETWEEN '$entrada' AND '$salida') 
+        OR (`fecha_check_out` BETWEEN '$entrada' AND '$salida')) ORDER BY `capacidad` asc";
 
+$consultarhabitacion2 = mysqli_query($conexion, $queryhabitacion_disponible);
 
-//hola
+if ($consultarhabitacion2) {
+    // Verificar si hay al menos una habitación disponible
+    if (mysqli_num_rows($consultarhabitacion2) > 0) {
+        // Tomar la primera habitación disponible
+        $row = mysqli_fetch_assoc($consultarhabitacion2);
+        $id_habitacion = $row['id_habitacion'];
 
+        // Mostrar el ID de la habitación antes de ser asignada
+        //echo "Habitación antes de ser asignada: " . $id_habitacion;
 
+               /* 
+        while ($row = mysqli_fetch_assoc($consultarhabitacion2)) {
+            echo "ID de habitación disponible: " . $row['id_habitacion'] . "<br>";
+        }
+        */
+
+    } else {
+        
+        echo "<script>alert('No hay habitaciones disponibles para las fechas seleccionadas.');</script>";
+        
+        exit(); 
+    }
+} else {
+    
+    exit(); // Detener la ejecución del script PHP
+}
 
 // código para generar el código de reserva
 function generarCodigo() {
@@ -98,9 +138,6 @@ $insertar="INSERT INTO `reserva`(`fecha_check_in`, `fecha_check_out`, `numero_pe
             </script>
             ";
      }
-
-
-
 
 
 mysqli_close($conexion);
