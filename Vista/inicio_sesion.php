@@ -53,7 +53,7 @@
     <section id="login">
     <div class="login-container">
         <h2>Iniciar sesión</h2>
-        <form action="/login" method="POST">
+        <form action="../Controlador/Login.php" method="POST">
             <div class="form-group">
                 <label class="link-text" data-es="Usuario" data-en="User">Nombre de usuario:</label>
                 <input type="text" id="username" name="username" required>
@@ -63,7 +63,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="form-group">
-                <input type="submit" value="Iniciar sesión">
+                <input type="submit" value="Iniciar sesión" name="btnLogin">
             </div>
         </form>
         <div class="login-links">

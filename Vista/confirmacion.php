@@ -39,6 +39,7 @@ $row2 = mysqli_fetch_assoc($resultado);
                         <p><strong>Nombre:</strong> <?php echo $row2['nombre']." ". $row2['apellido'] ?> </p>
                         <p><strong>Documento:</strong> <?php echo $row2['id_cliente'] ?></p>
                         <p><strong>Personas:</strong> <?php echo $row2['numero_personas'] ?></p>
+                        <p><strong>Habitación:</strong> <?php echo $row2['id_habitacion'] ?></p>
                         <p><strong>Fecha de entrada:</strong> <?php echo $row2['fecha_check_in'] ?></p>
                         <p><strong>Fecha de salida:</strong> <?php echo $row2['fecha_check_out'] ?></p>
                         <p><strong>Total a pagar:</strong> <?php echo $row2['monto_total'] ?></p>
@@ -48,7 +49,7 @@ $row2 = mysqli_fetch_assoc($resultado);
 
                         <!-- Botón para confirmar la reserva -->
                         <div class="text-center">
-                            <a href="./index.php"> <button class="btn btn-success"  >Confirmar Reserva</button></a>
+                            <a href="./index.php"> <button class="btn btn-success"  >Salir</button></a>
                         </div>
                     </div>
                 </div>

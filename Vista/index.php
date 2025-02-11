@@ -10,15 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
     <link id="modo_estilo" rel="stylesheet" href="Public/modo_claro.css">
-  
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
    
-    
-
-
 </head>
 
 <body>
+
+<?php
+      session_start();
+    ?>
+
     <header>
         <nav class="navbar">
             <div class="container">
@@ -37,12 +38,18 @@
             <div class="links">
                 <ul>
                     <li><a class="link-text" data-es="Inicio" data-en="Home" href="index.php">Inicio</a></li>
-                    <li><a class="link-text" data-es="Habitaciones" data-en="Rooms"
-                            href="#habitaciones">Habitaciones</a> </li>
-
+                    <li><a class="link-text" data-es="Habitaciones" data-en="Rooms" href="#habitaciones">Habitaciones</a> </li>
                     <li><a class="link-text" data-es="Contacto" data-en="Contacto" href="#contacto">Contacto</a></li>
-                    <li><a class="link-text" data-es="Iniciar sesión" data-en="Login"
-                            href="inicio_sesion.php">Contacto</a></li>
+                    <?php
+                    if ($_SESSION['user']) {
+                        $usuario = $_SESSION['user']; 
+                    // Asumiendo que 'user' guarda el nombre del usuario
+                        echo "<li><a>$usuario</a></li>";
+                    }else{
+                        echo' <li><a class="link-text" data-es="Iniciar sesión" data-en="Login" href="inicio_sesion.php">Inicio de Sesión</a></li>';
+                    }
+                    ?>
+                    
                 </ul>
             </div>
             </div>
