@@ -116,8 +116,9 @@ $querycliente = "SELECT `id_cliente`, `nombre`, `apellido`, `direccion`, `telefo
 $consultarcliente = mysqli_query($conexion, $querycliente);
 
 if (mysqli_num_rows($consultarcliente) == 0) {
-    $cliente = "INSERT INTO `cliente`(`id_cliente`, `nombre`, `apellido`, `direccion`, `telefono`, `nacionalidad`, `correo`) 
-                VALUES ('$documento', '$nombre', '$apellido', '$direccion', '$telefono', '$nacionalidad', '$correo')";
+    $nombre_completo= $nombre." ".$apellido;
+    $cliente = "INSERT INTO `cliente`(`id_cliente`, `nombre`, `apellido`, `nombre_completo`, `direccion`, `telefono`, `nacionalidad`, `correo`) 
+                VALUES ('$documento', '$nombre', '$apellido', '$nombre_completo', '$direccion', '$telefono', '$nacionalidad', '$correo')";
     
     mysqli_query($conexion, $cliente);
         

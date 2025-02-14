@@ -16,10 +16,6 @@
 
 <body>
 
-<?php
-      session_start();
-    ?>
-
     <header>
         <nav class="navbar">
             <div class="container">
@@ -40,16 +36,8 @@
                     <li><a class="link-text" data-es="Inicio" data-en="Home" href="index.php">Inicio</a></li>
                     <li><a class="link-text" data-es="Habitaciones" data-en="Rooms" href="#habitaciones">Habitaciones</a> </li>
                     <li><a class="link-text" data-es="Contacto" data-en="Contacto" href="#contacto">Contacto</a></li>
-                    <?php
-                    if ($_SESSION['user']) {
-                        $usuario = $_SESSION['user']; 
-                    // Asumiendo que 'user' guarda el nombre del usuario
-                        echo "<li><a>$usuario</a></li>";
-                    }else{
-                        echo' <li><a class="link-text" data-es="Iniciar sesión" data-en="Login" href="inicio_sesion.php">Inicio de Sesión</a></li>';
-                    }
-                    ?>
-                    
+                    <li><a class="link-text" data-es="Iniciar sesión" data-en="Login" href="inicio_sesion.php">Inicio de Sesión</a></li>
+                                       
                 </ul>
             </div>
             </div>
