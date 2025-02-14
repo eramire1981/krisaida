@@ -36,7 +36,7 @@ $row2 = mysqli_fetch_assoc($resultado);
                         <h3>Confirmar Reserva</h3>
                     </div>
                     <div class="card-body">
-                        <p><strong>Nombre:</strong> <?php echo $row2['nombre']." ". $row2['apellido'] ?> </p>
+                        <p><strong>Nombre:</strong> <?php echo $row2['nombre_completo']?> </p>
                         <p><strong>Documento:</strong> <?php echo $row2['id_cliente'] ?></p>
                         <p><strong>Personas:</strong> <?php echo $row2['numero_personas'] ?></p>
                         <p><strong>Habitación:</strong> <?php echo $row2['id_habitacion'] ?></p>

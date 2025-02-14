@@ -2,9 +2,57 @@
 include("../Modelo/conexion.php");
 $conexion=conexion();
 // Ejecutar la consulta
-$query = "SELECT * FROM `reserva` INNER JOIN `cliente` ON `reserva`.`id_cliente` = `cliente`.`id_cliente` ORDER BY `fecha_check_in` asc " ;
+$habitacion = isset($_GET['habitacion']) ? $_GET['habitacion'] : null;
+$cliente = isset($_GET['cliente']) ? $_GET['cliente'] : null;
+$codigo = isset($_GET['codigo']) ? $_GET['codigo'] : null;
+$fecha = isset($_GET['fecha']) ? $_GET['fecha'] : null;
+$estado = isset($_GET['estado']) ? $_GET['estado'] : null;
+
+// Empezamos con una consulta base
+$query = "SELECT * FROM `reserva` INNER JOIN `cliente` ON `reserva`.`id_cliente` = `cliente`.`id_cliente`";
+
+// Creamos un array para almacenar las condiciones
+$conditions = [];
+
+// Si la habitacion no está vacía, agregamos una condición para buscar por habitacion
+if (!empty($habitacion)) {
+    $conditions[] = "`reserva`.`id_habitacion` = '$habitacion'";
+}
+
+// Si el cliente no está vacío, agregamos una condición para buscar por cliente
+if (!empty($cliente)) {
+    $conditions[] = "`cliente`.`nombre_completo` LIKE '%$cliente%'";
+}
+
+if (!empty($codigo)) {
+        
+    $codigo_mayuscula = strtolower($codigo);
+    $conditions[] = "`reserva`.`codigo_confirmacion` = '$codigo_mayuscula'";
+}
+
+if (!empty($estado)) {
+        
+    $estado_mayuscula = strtolower($estado);
+    $conditions[] = "`reserva`.`estado_reserva` = '$estado_mayuscula'";
+}
+if (!empty($fecha)) {
+        
+    $fecha1 = new DateTime($fecha);
+    $fechaFormateada = $fecha1->format('Y-m-d');
+    $conditions[] = "`reserva`.`fecha_check_in` = '$fechaFormateada'";
+}
+// Si hay alguna condición, las añadimos a la consulta
+if (!empty($conditions)) {
+    $query .= " WHERE " . implode(" AND ", $conditions);
+}
+
+// Añadimos el ordenamiento
+$query .= " ORDER BY `fecha_check_in` ASC";
+
+// Ejecutamos la consulta
 $resultado = mysqli_query($conexion, $query);
-$row2 = mysqli_fetch_assoc($resultado);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +91,7 @@ $row2 = mysqli_fetch_assoc($resultado);
                         echo' <li><a class="link-text" data-es="Iniciar sesión" data-en="Login" href="inicio_sesion.php">Inicio de Sesión</a></li>';
                     }
                     ?>
-                    
+                     <li><a class="link-text" data-es="Cerrar sesión" data-en="Logout" href="../Controlador/Logout.php"></a></li>
                 </ul>
             </div>
             </div>
@@ -67,43 +115,71 @@ $row2 = mysqli_fetch_assoc($resultado);
 
     </header>
 
+<div>
+    <form id="myForm" action="" method="GET">
+        <input type="text" name="habitacion">
+        <input type="text" name="cliente">
+        <input type="text" name="codigo">
+        <input type="date" name="fecha">
+        <input type="text" name="estado">
+        <input class="button" type="submit" value="Enviar">
+    </form>
+</div>
+
     <div class= "container-tabla">
-  <table>
-  <thead>
-    <tr>
-      <th scope="col">Nombre Completo</th>
-      <th scope="col">Documento</th>
-      <th scope="col">Personas</th>
-      <th scope="col">Habitación</th>
-      <th scope="col">Fecha de entrada</th>
-      <th scope="col">Fecha de salida</th>
-      <th scope="col">Total a pagar</th>
-      <th scope="col">Método de pago</th>
-      <th scope="col">Código de la reserva</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-    while ($row =mysqli_fetch_assoc($resultado)): ?>
-      <tr>
-        <td><?=$row['nombre']. " "  . $row['apellido']?></td>
-        <td><?=$row['id_cliente']?></td>
-        <td><?=$row['numero_personas']?></td>
-        <td><?=$row['id_habitacion']?></td>
-        <td><?=$row['fecha_check_in']?></td>
-        <td><?=$row['fecha_check_out']?></td>
-        <td><?=$row['monto_total']?></td>
-        <td><?=$row['metodo_pago']?></td>
-        <td><?=$row['codigo_confirmacion']?></td>
-      </tr>
-    <?php
-    endwhile;
-    ?>
-  </tbody>
-  </table>
+        <table>
+        <thead>
+            <tr>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Personas</th>
+            <th scope="col">Habitación</th>
+            <th scope="col">Fecha de entrada</th>
+            <th scope="col">Fecha de salida</th>
+            <th scope="col">Total a pagar</th>
+            <th scope="col">Método de pago</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Código de la reserva</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            while ($row =mysqli_fetch_assoc($resultado)): ?>
+            <tr>
+                <td><?=$row['nombre']. " "  . $row['apellido']?></td>
+                <td><?=$row['id_cliente']?></td>
+                <td><?=$row['numero_personas']?></td>
+                <td><?=$row['id_habitacion']?></td>
+                <td><?=$row['fecha_check_in']?></td>
+                <td><?=$row['fecha_check_out']?></td>
+                <td><?=$row['monto_total']?></td>
+                <td><?=$row['metodo_pago']?></td>
+                <td><?=$row['estado_reserva']?></td>
+                <td><?=$row['codigo_confirmacion']?></td>
+            </tr>
+            <?php
+            endwhile;
+            ?>
+        </tbody>
+        </table>
 </div>
 
     <script src="hotel.js"></script>
+
+    <script>
+    document.getElementById('myForm').onsubmit = function(e) {
+        // Obtener todos los elementos del formulario
+        const formElements = e.target.elements;
+        
+        // Recorrer los campos del formulario y eliminar los vacíos
+        for (let i = 0; i < formElements.length; i++) {
+            if (formElements[i].value.trim() === "") {
+                // Si el campo está vacío, eliminamos el campo del formulario
+                formElements[i].removeAttribute('name');
+            }
+        }
+    };
+</script>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

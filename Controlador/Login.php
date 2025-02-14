@@ -16,7 +16,12 @@
 								
 				header("location:../Vista/administrador.php");
 			}else{
-				echo('<div class="alert alert-danger">Error: Usuario o clave incorrecta</div>');
+				echo "
+					<script>
+						alert('usuario o contraseña incorrecto');
+						window.location = '../Vista/inicio_sesion.php';
+					</script>
+					";
 			}
 			
 		}else{
