@@ -1,0 +1,202 @@
+body {
+    font-family: 'Montserrat', Cochin, Georgia, Times, 'Times New Roman', sans-serif;
+    color: #fff;
+    background-color: #f3dede;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+   
+}
+nav {
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+}
+
+.containerlinks {
+    padding: 0;
+    align-items: center;
+}
+
+.links ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0 10px;
+    padding: 0;
+}
+
+.links li {
+    margin: 10px;
+    padding: 0;
+}
+
+.links a {
+    text-decoration: none;
+}
+
+.links {
+    padding: 0;
+}
+
+table {
+    color:#1e2b38;
+
+}
+
+.title {
+    font-size: 2.441rem;
+    font-family: 'Playwrite CU';
+    padding: 0px;
+
+}
+
+h2 {
+    font-size: 1.953rem;
+}
+
+h3 {
+    font-size: 1.563rem;
+}
+
+a {
+    text-decoration-style: none;
+    text-decoration: none;
+    color: #4d4d4d;
+}
+
+.container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    flex: 1;
+}
+
+.flag-container {
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+    position: relative;
+    /* Necesario para posicionar el tooltip */
+}
+
+#flag {
+    width: 30px;
+    /* Ajusta el tamaño de la bandera si es necesario */
+    height: auto;
+    cursor: pointer;
+    /* Cambia el cursor a una mano para indicar interactividad */
+    margin: 0;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip-text {
+    visibility: hidden;
+    /* Oculta el tooltip por defecto */
+    width: 160px;
+    /* Ajusta el ancho del tooltip si es necesario */
+    background-color: #624343;
+    /* Fondo del tooltip */
+    color: #fff;
+    /* Color del texto del tooltip */
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    /* Posición del tooltip */
+    left: 30%;
+    margin-left: -120px;
+    /* Centra el tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+    /* Suaviza la transición del tooltip */
+}
+
+/* Muestra el tooltip al pasar el cursor sobre el contenedor */
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.containermodo {
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+    position: relative;
+    margin-right: 10px;
+
+}
+
+#btn_modo {
+
+    padding: 0px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 30px;
+    height: auto;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+
+}
+
+.modo {
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+.modo img {
+
+    width: 30px;
+    /* Ajusta el tamaño de la imagen según sea necesario */
+    height: auto;
+    display: block;
+    background-color: transparent
+}
+
+/* Css de la tabla*/
+/* titulos de tabla*/
+th {
+    background-color: #e9ae8c;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  /* contenedor de la tabla*/
+  .container-tabla {
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  table {
+    border-collapse: collapse;
+    color: #6f4f28;
+  }
+  
+  th,
+  td {
+    overflow-wrap: break-word;
+    text-align: center;
+    border: 1px solid #1b1111;
+  }
