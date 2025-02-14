@@ -13,7 +13,7 @@ $row2 = mysqli_fetch_assoc($resultado);
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOTEL RESTAURANTE KRISAIDA</title>
-    <link rel="stylesheet" href="Public/estilos.css">
+    <link rel="stylesheet" href="Public/estilos2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
@@ -67,7 +67,7 @@ $row2 = mysqli_fetch_assoc($resultado);
 
     </header>
 
-    <div>
+    <div class= "container-tabla">
   <table>
   <thead>
     <tr>
