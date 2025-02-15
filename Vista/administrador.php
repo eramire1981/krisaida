@@ -67,6 +67,51 @@ $resultado = mysqli_query($conexion, $query);
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
     <link id="modo_estilo" rel="stylesheet" href="Public/modo_claro.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+    <style>
+  /* Contenedor para los campos alineados horizontalmente */
+.form-container {
+    display: flex;
+    justify-content: center; /* Distribuye los campos de manera equitativa */
+    gap: 20px; /* Espacio entre los elementos */
+    flex-wrap: wrap; /* Permite que los campos se ajusten si no caben en una sola línea */
+    margin-bottom: 20px; /* Espacio adicional debajo de los campos */
+}
+
+/* Estilo para los inputs y selects */
+input[type="text"],
+input[type="date"],
+select {
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #a4a4a4;
+    width: 200px; /* Ancho definido para los campos */
+    
+}
+
+/* Estilo para el botón */
+button {
+    width: 20%; /* Hace que el botón ocupe todo el ancho */
+    padding: 10px;
+    font-size: 20px;
+    background-color: #FF8C00; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+      }
+
+/* Opcional: Para centrar las etiquetas y campos si es necesario */
+.form-container label,
+.form-container input,
+.form-container select {
+    text-align: center;
+}
+
+
+    </style>
 </head>
 
 <body>
@@ -91,7 +136,10 @@ $resultado = mysqli_query($conexion, $query);
                         echo' <li><a class="link-text" data-es="Iniciar sesión" data-en="Login" href="inicio_sesion.php">Inicio de Sesión</a></li>';
                     }
                     ?>
+                     <li><a class="link-text" data-es="Comentarios" data-en="Comments" href="./comentario.php"></a></li>
+                     <li><a class="link-text" data-es="Administracion" data-en="Administration" href="./administrador.php"></a></li>
                      <li><a class="link-text" data-es="Cerrar sesión" data-en="Logout" href="../Controlador/Logout.php"></a></li>
+                     
                 </ul>
             </div>
             </div>
@@ -116,15 +164,17 @@ $resultado = mysqli_query($conexion, $query);
     </header>
 
 <div>
-    <form id="myForm" action="" method="GET">
-        <input type="text" name="habitacion">
-        <input type="text" name="cliente">
-        <input type="text" name="codigo">
+    <form class="form-container" id="myForm" action="" method="GET">
+        <input type="text" name="habitacion"placeholder="habitación">
+        <input type="text" name="cliente" placeholder="cliente">
+        <input type="text" name="codigo" placeholder="codigo">
         <input type="date" name="fecha">
-        <input type="text" name="estado">
-        <input class="button" type="submit" value="Enviar">
+        <input type="text" name="estado" placeholder="estado">
+        <button type="submit"> Buscar  </button>
     </form>
 </div>
+<br>
+<hr>
 
     <div class= "container-tabla">
         <table>
@@ -140,6 +190,8 @@ $resultado = mysqli_query($conexion, $query);
             <th scope="col">Método de pago</th>
             <th scope="col">Estado</th>
             <th scope="col">Código de la reserva</th>
+            <th scope="col">Eliminar</th>
+            <th scope="col">Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -156,6 +208,8 @@ $resultado = mysqli_query($conexion, $query);
                 <td><?=$row['metodo_pago']?></td>
                 <td><?=$row['estado_reserva']?></td>
                 <td><?=$row['codigo_confirmacion']?></td>
+                <td> <a href="../Controlador/eliminar.php?id=<?=$row['id_reserva']?>">Eliminar</a> </td>
+                <td> <a href="./editar.php?id=<?=$row['id_reserva']?>">Editar</a> </td>
             </tr>
             <?php
             endwhile;
