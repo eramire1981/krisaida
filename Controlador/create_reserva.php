@@ -14,7 +14,7 @@ $entrada=$_POST['entrada'];
 $salida=$_POST['salida'];
 $fecha= date('Y-m-d H:i:s');
 $pago=$_POST['metodo'];
-$id_habitacion=101;
+$id_habitacion=0;
 //echo $nombre . " " . $apellido . " " . $direccion . " " . $telefono . " " . $nacionalidad . " " . $correo . " " . $huespedes . " " . $entrada . " " . $salida . " " . $pago;
 
 //código para saber el número de días
