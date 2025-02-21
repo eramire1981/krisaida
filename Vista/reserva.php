@@ -12,6 +12,28 @@
     <link id="modo_estilo" rel="stylesheet" href="Public/modo_claro.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
+    <style>
+
+input,
+select {
+            border: 2px solid #cecece;
+            border-radius: 5px;
+            padding: 10px 10px;
+            font-size: 20px;
+            color: #555;
+            width: 100%;
+            margin-bottom: 10px;
+            box-sizing: border-box;  /* Asegura que el padding y el border se incluyan dentro del ancho total */
+        }
+
+        /* Estilo específico para los elementos select (quita el estilo predeterminado del navegador) */
+        select {
+            -webkit-appearance: none; /* Elimina los estilos por defecto en algunos navegadores */
+            -moz-appearance: none;
+            appearance: none;
+}
+            
+    </style>
 </head>
 
 <body>
@@ -79,14 +101,15 @@
                         <br />                       
                         <label class="link-text" data-es="Número de huéspedes" data-en="Number of guests"></label>
                         <select id="huespedes" name="huespedes" required>
+                            <option selected disabled value=" ">Seleccione el número de huéspedes</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-                            <option disabled value=" ">Si el número de huespedes es más de 6</option>
-                            <option disabled value=" ">Haga otra reserva</option>
+                            <option disabled value=" ">Si el número de huespedes es más de 6,</option>
+                            <option disabled value=" ">haga otra reserva</option>
                         </select>
                         <br />
                         <label class="link-text" data-es="Fecha de entrada" data-en="Check in"></label>
@@ -97,6 +120,7 @@
                          <br/>
                          <label class="link-text" data-es="Método de pago" data-en="Pay method"></label>
                         <select id="metodo_pago" name="metodo" required>
+                            <option selected disabled value=" ">Seleccione el método de pago</option>
                             <option value="tarjeta">Tarjeta</option>
                             <option value="transferencia">Transferencia</option>
                             <option value="efectivo">Efectivo</option>

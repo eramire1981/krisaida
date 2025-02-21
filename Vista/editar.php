@@ -31,6 +31,62 @@ $row2 = mysqli_fetch_assoc($resultado);
     <link id="modo_estilo" rel="stylesheet" href="Public/modo_claro.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
+    <style>
+/* Estilo común para todos los botones */
+.boton2 {
+    background-color: #4CAF50;  /* Color de fondo verde */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 270px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/* Efecto hover para los botones */
+.boton2:hover {
+    background-color: #45a049;  /* Un verde más oscuro al pasar el ratón */
+    transform: scale(1.05);  /* Hace que el botón crezca un poco cuando se pasa el ratón */
+}
+
+/* Estilo específico para el botón "Cancelar" (cuando esté dentro de un <a>) */
+a .boton2 {
+    background-color: #f44336;  /* Color de fondo rojo para cancelar */
+    text-decoration: none;  /* Elimina el subrayado del enlace */
+}
+
+a .boton2:hover {
+    background-color: #e53935;  /* Un rojo más oscuro al pasar el ratón */
+    transform: scale(1.05);
+}
+
+input,
+select {
+            border: 2px solid #cecece;
+            border-radius: 5px;
+            padding: 10px 10px;
+            font-size: 20px;
+            color: #555;
+            width: 100%;
+            margin-bottom: 10px;
+            box-sizing: border-box;  /* Asegura que el padding y el border se incluyan dentro del ancho total */
+        }
+
+        /* Estilo específico para los elementos select (quita el estilo predeterminado del navegador) */
+        select {
+            -webkit-appearance: none; /* Elimina los estilos por defecto en algunos navegadores */
+            -moz-appearance: none;
+            appearance: none;
+}
+            
+    </style>
 </head>
 
 <body>
@@ -130,8 +186,8 @@ $row2 = mysqli_fetch_assoc($resultado);
                         <input type="text" name="estado" required value= "<?php echo $row2['estado_reserva']?> ">
                         <br/><br/>
                         <div class="contenedor-boton">
-                            <input class=" boton" type="submit" value="Editar reserva">
-                            <a href="./administrador.php"><input class=" boton" value="Cancelar"></a>
+                            <input class="boton2" type="submit" value="Editar reserva">
+                            <a href="./administrador.php"><input class="boton2" value="Cancelar"></a>
                          <br /> <br />
                         
                         </div>
