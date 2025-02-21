@@ -347,21 +347,6 @@ footer .contacto .formulario textarea {
 }
 
 
-footer .contacto .formulario .boton {
-    margin: auto;
-    background: #EE6C4D;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 15px 40px;
-
-
-}
-
-footer .contacto .formulario .boton:hover {
-    background: #EE6C4D;
-}
-
 .contenedor-boton {
     display: flex;
 }
@@ -513,9 +498,7 @@ label {
 
 
 .contacto .formulario input[type="text"],
-.contacto .formulario input[type="date"],
-.contacto select#metodo_pago,
-.contacto select#huespedes
+.contacto .formulario input[type="date"]
 
 {
     border: 2px solid #cecece;
@@ -552,7 +535,7 @@ label {
 }
 
 .contacto .formulario .boton:hover {
-    background: #EE6C4D;
+    background: #2c0b6a;
 }
 
 select#metodo_pago:focus {

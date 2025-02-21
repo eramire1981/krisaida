@@ -128,7 +128,7 @@ button {
             <div class="links">
                 <ul>               
                     <?php
-                    if ($_SESSION['user']) {
+                    if (isset($_SESSION['user']) && $_SESSION['user']) {
                         $usuario = $_SESSION['user']; 
                     // Asumiendo que 'user' guarda el nombre del usuario
                         echo "<li><a>$usuario</a></li>";

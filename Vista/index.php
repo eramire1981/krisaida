@@ -130,7 +130,8 @@
                     <li>baño privado</li>
                     <li>Mesa de noche</li>
                     <li>Closet o cajonera</li>
-
+                    </br>
+                    <center> <img src= "Public/img/Doble.jpeg" width="300px" height="375px" > </center>
 
                 </div>
 
@@ -150,7 +151,10 @@
                     <li>baño privado</li>
                     <li>Mesa de noche</li>
                     <li>Closet o cajonera</li>
-
+                    </br>
+                    
+                   <center> <img src= "Public/img/Múltiple.jpeg" width="400px" height="300px" > </center>
+          
                 </div>
 
                 <div class="servicios">
@@ -201,7 +205,7 @@
                     <p class>Cartagena, Colombia</p>
                 </div>
 
-                <div class="contacto2">
+                <div>
                     <form class="formulario" action="../Controlador/create_contacto.php" method="POST">
                         <label class="link-text" data-es="Nombre" data-en="Name"></label>
                         <input type="text" name="nombre" required>
@@ -216,7 +220,7 @@
                         <textarea name="mensaje"></textarea>
                         <br />
                         <div class="contenedor-boton">
-                            <input class=" boton" type="submit" value="Enviar">
+                            <input class="boton" type="submit" value="Enviar">
                         </div>
                     </form>
                 </div>
